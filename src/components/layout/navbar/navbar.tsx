@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // images
-import TailwindLogo from "@/assets/images/tailwindcss.svg";
+import TailwindLogo from "../../../../public/tailwindcss.svg";
 // icons
 import {
   IoSearchOutline,

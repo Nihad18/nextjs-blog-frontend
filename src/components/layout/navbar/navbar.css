@@ -1,0 +1,22 @@
+.header {
+  @apply container mx-auto h-[123px] flex justify-between items-center px-5 lg:px-0;
+}
+
+.logo-text {
+  @apply text-2xl font-semibold ml-2 hidden md:block;
+}
+
+.route-wrapper {
+  @apply space-x-4 lg:space-x-6 font-medium flex justify-between items-center text-xl;
+}
+
+.close-button{
+   @apply absolute top-10 right-10 text-5xl md:hidden
+}
+
+@media screen and (max-width: 768px) {
+  .toggle {
+    @apply max-w-[768px] absolute left-0 top-0 flex justify-center items-center flex-col
+        space-x-0 space-y-5 h-[100vh] w-[100vw] bg-black/80 text-white text-5xl;
+  }
+}

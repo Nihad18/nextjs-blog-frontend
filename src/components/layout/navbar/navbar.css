@@ -3,7 +3,7 @@
 }
 
 .logo-text {
-  @apply text-2xl font-semibold ml-2 hidden md:block;
+  @apply text-2xl font-semibold ml-2 hidden lg:block;
 }
 
 .route-wrapper {

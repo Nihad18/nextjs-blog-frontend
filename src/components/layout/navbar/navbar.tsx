@@ -59,7 +59,7 @@ function Navbar() {
         </div>
         <IoSearchOutline />
         {darkMode ? (
-          <IoMoonSharp
+          <IoSunnyOutline
             className='cursor-pointer'
             onClick={() => {
               changeMode(false);
@@ -67,7 +67,7 @@ function Navbar() {
             }}
           />
         ) : (
-          <IoSunnyOutline
+          <IoMoonSharp
             className='cursor-pointer'
             onClick={() => {
               changeMode(true);
@@ -77,7 +77,7 @@ function Navbar() {
         )}
         <GiHamburgerMenu
           onClick={() => setToggle(!toggle)}
-          className='md:hidden cursor-pointer'
+          className='lg:hidden cursor-pointer'
         />
       </div>
     </header>

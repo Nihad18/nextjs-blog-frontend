@@ -10,5 +10,8 @@ const checkLocalStorage =
     window.matchMedia("(prefers-color-scheme: dark)").matches);
 export const useThemeStore = create<DarkModeState>()((set: any) => ({
   darkMode: checkLocalStorage,
-  changeMode: (value: boolean) => set({ darkMode: value }),
+  changeMode: (value: boolean) => {
+    set({ darkMode: value });
+    localStorage.setItem("theme", value ? "dark" : "light");
+  },
 }));

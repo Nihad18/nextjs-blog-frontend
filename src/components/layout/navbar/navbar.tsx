@@ -63,7 +63,6 @@ function Navbar() {
             className='cursor-pointer'
             onClick={() => {
               changeMode(false);
-              localStorage.setItem("theme", "dark");
             }}
           />
         ) : (
@@ -71,7 +70,6 @@ function Navbar() {
             className='cursor-pointer'
             onClick={() => {
               changeMode(true);
-              localStorage.setItem("theme", "light");
             }}
           />
         )}

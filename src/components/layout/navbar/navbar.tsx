@@ -26,7 +26,7 @@ function Navbar() {
 
   useLocalStorage();
 
-  const routes: string[] = ["Blogs", "Tags", "About"];
+  const routes: string[] = ["Blogs", "Tags", "About","Login"];
   return (
     <header className='header'>
       {/* logo */}

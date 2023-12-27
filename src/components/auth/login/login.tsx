@@ -1,8 +1,59 @@
-import React from 'react';
+"use client";
+import React from "react";
+import { Formik, Form } from "formik";
+import { z } from "zod";
+import { toFormikValidationSchema } from "zod-formik-adapter";
+import "../auth.css";
+import Input from "@/components/shared/input/input";
+
+const loginFormSchema = z.object({
+  // defines a required field called email.
+  // we use the built-in email validator from zod
+  email: z.string().email("Please enter a valid email"),
+  // defines a required field called message with length constraints of 7-30 characters.
+  password: z
+    .string()
+    .min(7)
+    .max(30)
+    .refine(
+      (value: string) =>
+        /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value),
+      {
+        message: "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
+      }
+    ),
+});
+
 const Login = () => {
+  const handleSubmit = async (values: any) => {
+    console.log(values);
+  };
+
   return (
-    <div>
-      <h1>Login page</h1>
+    <div className='form'>
+      <h1 className='heading-text'>Login</h1>
+      <Formik
+        initialValues={{ email: "", password: "" }}
+        onSubmit={handleSubmit}
+        validationSchema={toFormikValidationSchema(loginFormSchema)}
+      >
+        {({errors}) => (
+          <Form>
+            <Input label='Your email' id='email' name='email' type='email' />
+            <div className='text-red'>{errors.email}</div>
+            <Input
+              label='Your password'
+              id='password'
+              name='password'
+              type='password'
+            />
+            <div className='text-red'>{errors.password}</div>
+            <button className='submit-button' type='submit'>
+              Submit
+            </button>
+          </Form>
+        )}
+      </Formik>
     </div>
   );
 };

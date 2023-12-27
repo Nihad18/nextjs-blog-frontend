@@ -43,6 +43,7 @@ const Register = () => {
         {({ errors }) => (
           <Form>
             <Input label='Your full name' id='fullName' name='fullName' type='text' />
+            <div className='text-red'>{errors.fullName}</div>
             <Input label='Your email' id='email' name='email' type='email' />
             <div className='text-red'>{errors.email}</div>
             <Input

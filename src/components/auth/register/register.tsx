@@ -6,6 +6,13 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 import "../auth.css";
 import Input from "@/components/shared/input/input";
 
+interface registerFormInterface{
+  fullName: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+} 
+
 const registerFormSchema = z.object({
   // defines a required field called message with length constraints of 3-50 characters.
   fullName: z.string().min(3).max(50),
@@ -25,6 +32,16 @@ const registerFormSchema = z.object({
           "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
       }
     ),
+  confirmPassword: z
+    .string()
+    .min(7)
+    .max(30)
+    .refine(
+      (values : registerFormInterface) => {
+       return values.password === values.confirmPassword;
+      },
+      { message: "Passwords must match!" }
+    ),
 });
 
 const Register = () => {
@@ -36,23 +53,49 @@ const Register = () => {
     <div className='form'>
       <h1 className='heading-text'>Register</h1>
       <Formik
-        initialValues={{ fullName: "", email: "", password: "" }}
+        initialValues={{
+          fullName: "",
+          email: "",
+          password: "",
+          confirmPassword: "",
+        }}
         onSubmit={handleSubmit}
         validationSchema={toFormikValidationSchema(registerFormSchema)}
       >
         {({ errors }) => (
           <Form>
-            <Input label='Your full name' id='fullName' name='fullName' type='text' />
+            <Input
+              label='Full name'
+              id='fullName'
+              name='fullName'
+              type='text'
+              placeholder='full name'
+            />
             <div className='text-red'>{errors.fullName}</div>
-            <Input label='Your email' id='email' name='email' type='email' />
+            <Input
+              label='Email'
+              id='email'
+              name='email'
+              type='email'
+              placeholder='email'
+            />
             <div className='text-red'>{errors.email}</div>
             <Input
-              label='Your password'
+              label='Password'
               id='password'
               name='password'
               type='password'
+              placeholder='password'
             />
             <div className='text-red'>{errors.password}</div>
+            <Input
+              label='Confirm password'
+              id='confirmPassword'
+              name='confirmPassword'
+              type='password'
+              placeholder='confirm password'
+            />
+            <div className='text-red'>{errors.confirmPassword}</div>
             <button className='submit-button' type='submit'>
               Submit
             </button>

@@ -6,47 +6,48 @@ import { toFormikValidationSchema } from "zod-formik-adapter";
 import "../auth.css";
 import Input from "@/components/shared/input/input";
 
-interface registerFormInterface{
+interface IRegisterForm {
   fullName: string;
   email: string;
   password: string;
   confirmPassword: string;
-} 
+}
 
-const registerFormSchema = z.object({
-  // defines a required field called message with length constraints of 3-50 characters.
-  fullName: z.string().min(3).max(50),
-  // defines a required field called email.
-  // we use the built-in email validator from zod
-  email: z.string().email("Please enter a valid email"),
-  // defines a required field called message with length constraints of 7-30 characters.
-  password: z
-    .string()
-    .min(7)
-    .max(30)
-    .refine(
-      (value: string) =>
-        /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value),
-      {
-        message:
-          "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
-      }
-    ),
-  confirmPassword: z
-    .string()
-    .min(7)
-    .max(30)
-    .refine(
-      (values : registerFormInterface) => {
-       return values.password === values.confirmPassword;
-      },
-      { message: "Passwords must match!" }
-    ),
-});
+const registerFormSchema = z
+  .object({
+    // defines a required field called message with length constraints of 3-50 characters.
+    fullName: z.string().min(3).max(50),
+    // defines a required field called email.
+    // we use the built-in email validator from zod
+    email: z.string().email("Please enter a valid email"),
+    // defines a required field called message with length constraints of 7-30 characters.
+    password: z
+      .string()
+      .min(7)
+      .max(30)
+      .refine(
+        (value: string) =>
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,30}$/.test(value),
+        {
+          message:
+            "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
+        }
+      ),
+    confirmPassword: z.string().min(7).max(30),
+  })
+  .refine((values: IRegisterForm) => values.password === values.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
 
 const Register = () => {
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (
+    values: IRegisterForm,
+    { setSubmitting, resetForm }
+  ) => {
     console.log(values);
+    setSubmitting(false);
+    resetForm({ values: "" });
   };
 
   return (
@@ -62,7 +63,7 @@ const Register = () => {
         onSubmit={handleSubmit}
         validationSchema={toFormikValidationSchema(registerFormSchema)}
       >
-        {({ errors }) => (
+        {({ errors, isSubmitting }) => (
           <Form>
             <Input
               label='Full name'
@@ -96,7 +97,11 @@ const Register = () => {
               placeholder='confirm password'
             />
             <div className='text-red'>{errors.confirmPassword}</div>
-            <button className='submit-button' type='submit'>
+            <button
+              className='submit-button'
+              type='submit'
+              disabled={isSubmitting}
+            >
               Submit
             </button>
           </Form>

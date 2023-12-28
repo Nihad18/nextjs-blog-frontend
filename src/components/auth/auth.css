@@ -4,11 +4,11 @@
   py-2.5 mt-4 text-center dark:bg-blue dark:hover:bg-blue-2 dark:focus:ring-blue-2;
 }
 
-.form{
-    @apply max-w-[400px] mx-auto
+.form {
+  @apply max-w-[350px] sm:max-w-[400px] mx-auto;
 }
-.heading-text{
-    @apply text-center font-semibold text-2xl
+.heading-text {
+  @apply text-center font-semibold text-2xl;
 }
 
 /* login */

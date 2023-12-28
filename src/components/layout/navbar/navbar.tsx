@@ -46,7 +46,7 @@ function Navbar() {
           } transition-all md:flex space-x-4 lg:space-x-6`}
         >
           {routes.map((route, index) => (
-            <Link key={index} href={"/" + route.toLowerCase()}>
+            <Link onClick={() => setToggle(false)} key={index} href={"/" + route.toLowerCase()}>
               {route}
             </Link>
           ))}

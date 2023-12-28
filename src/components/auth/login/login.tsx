@@ -19,7 +19,8 @@ const loginFormSchema = z.object({
       (value: string) =>
         /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value),
       {
-        message: "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
+        message:
+          "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
       }
     ),
 });
@@ -37,15 +38,22 @@ const Login = () => {
         onSubmit={handleSubmit}
         validationSchema={toFormikValidationSchema(loginFormSchema)}
       >
-        {({errors}) => (
+        {({ errors }) => (
           <Form>
-            <Input label='Your email' id='email' name='email' type='email' />
+            <Input
+              label='Email'
+              id='email'
+              name='email'
+              type='email'
+              placeholder='email'
+            />
             <div className='text-red'>{errors.email}</div>
             <Input
-              label='Your password'
+              label='Password'
               id='password'
               name='password'
               type='password'
+              placeholder='password'
             />
             <div className='text-red'>{errors.password}</div>
             <button className='submit-button' type='submit'>

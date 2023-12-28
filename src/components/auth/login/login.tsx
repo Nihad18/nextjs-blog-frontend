@@ -17,7 +17,7 @@ const loginFormSchema = z.object({
     .max(30)
     .refine(
       (value: string) =>
-        /((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/.test(value),
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,30}$/.test(value),
       {
         message:
           "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
@@ -26,8 +26,10 @@ const loginFormSchema = z.object({
 });
 
 const Login = () => {
-  const handleSubmit = async (values: any) => {
+  const handleSubmit = async (values: any, { setSubmitting, resetForm }) => {
     console.log(values);
+    setSubmitting(false);
+    resetForm({ values: "" });
   };
 
   return (
@@ -38,7 +40,7 @@ const Login = () => {
         onSubmit={handleSubmit}
         validationSchema={toFormikValidationSchema(loginFormSchema)}
       >
-        {({ errors }) => (
+        {({ errors, isSubmitting }) => (
           <Form>
             <Input
               label='Email'
@@ -56,7 +58,11 @@ const Login = () => {
               placeholder='password'
             />
             <div className='text-red'>{errors.password}</div>
-            <button className='submit-button' type='submit'>
+            <button
+              className='submit-button'
+              type='submit'
+              disabled={isSubmitting}
+            >
               Submit
             </button>
           </Form>

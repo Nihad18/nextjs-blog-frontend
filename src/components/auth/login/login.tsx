@@ -1,32 +1,19 @@
 "use client";
 import React from "react";
+// formik 
 import { Formik, Form } from "formik";
-import { z } from "zod";
 import { toFormikValidationSchema } from "zod-formik-adapter";
+// style files
 import "../auth.css";
+// components
 import Input from "@/components/shared/input/input";
-
-const loginFormSchema = z.object({
-  // defines a required field called email.
-  // we use the built-in email validator from zod
-  email: z.string().email("Please enter a valid email"),
-  // defines a required field called message with length constraints of 7-30 characters.
-  password: z
-    .string()
-    .min(7)
-    .max(30)
-    .refine(
-      (value: string) =>
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{7,30}$/.test(value),
-      {
-        message:
-          "Password too weak , password must have at least 1 uppercase,1 lowercase and 1 special character",
-      }
-    ),
-});
+// schemas
+import { loginFormSchema } from "@/utils/schemas/auth";
+// interfaces
+import { ILoginForm } from "@/utils/interfaces/auth";
 
 const Login = () => {
-  const handleSubmit = async (values: any, { setSubmitting, resetForm }) => {
+  const handleSubmit = async (values: ILoginForm, { setSubmitting, resetForm }) => {
     console.log(values);
     setSubmitting(false);
     resetForm({ values: "" });

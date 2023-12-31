@@ -47,3 +47,8 @@ export const loginFormSchema = z.object({
       }
     ),
 });
+export const otpCodeFormSchema = z.object({
+  // defines a required field called email.
+  // we use the built-in email validator from zod
+  otpCode: z.number().min(6).max(6),
+});

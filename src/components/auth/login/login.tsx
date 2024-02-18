@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-// formik 
+// formik
 import { Formik, Form } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 // style files
@@ -11,10 +11,22 @@ import Input from "@/components/shared/input/input";
 import { loginFormSchema } from "@/utils/schemas/auth";
 // interfaces
 import { ILoginForm } from "@/utils/interfaces/auth";
-
+//services
+import { LoginService } from "@/services/auth-service";
+import Link from "next/link";
 const Login = () => {
-  const handleSubmit = async (values: ILoginForm, { setSubmitting, resetForm }) => {
+  const handleSubmit = async (
+    values: ILoginForm,
+    { setSubmitting, resetForm }
+  ) => {
     console.log(values);
+    const { loading, error, data } = LoginService(values);
+    if (error) {
+      console.log(error);
+    } else if (loading) {
+      console.log(loading);
+    }
+    console.log(data);
     setSubmitting(false);
     resetForm({ values: "" });
   };
@@ -55,6 +67,12 @@ const Login = () => {
           </Form>
         )}
       </Formik>
+      <Link href="/auth/register" className="routing-link">
+          Create a new account
+      </Link>
+      <Link href="/auth/register" className="routing-link">
+          Forgot password?
+      </Link>
     </div>
   );
 };

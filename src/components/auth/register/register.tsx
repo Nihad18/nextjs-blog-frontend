@@ -11,6 +11,9 @@ import Input from "@/components/shared/input/input";
 import { registerFormSchema } from "@/utils/schemas/auth";
 // interfaces
 import { IRegisterForm } from "@/utils/interfaces/auth";
+//services
+import { RegisterService } from "@/services/auth-service";
+import Link from "next/link";
 
 const Register = () => {
   const handleSubmit = async (
@@ -18,6 +21,13 @@ const Register = () => {
     { setSubmitting, resetForm }
   ) => {
     console.log(values);
+    const { loading, error, data } = RegisterService(values);
+    if (error) {
+      console.log(error);
+    } else if (loading) {
+      console.log(loading);
+    }
+    console.log(data);
     setSubmitting(false);
     resetForm({ values: "" });
   };
@@ -79,6 +89,12 @@ const Register = () => {
           </Form>
         )}
       </Formik>
+      <Link href="/auth/login" className="routing-link">
+          Do you have any account ?
+      </Link>
+      <Link href="/auth/register" className="routing-link">
+          Forgot password?
+      </Link>
     </div>
   );
 };

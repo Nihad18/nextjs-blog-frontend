@@ -10,14 +10,10 @@ const Timer: React.FC<{ expiryTimestamp: any; reset: boolean,setOnExpire:Functio
     expiryTimestamp,
     onExpire: () => {
         setOnExpire(true); // Set onExpire to true directly
-        setReset(false); // Reset the reset state after expiration
     },
   });
   useEffect(() => {
-    if (reset) {
       restart(expiryTimestamp);
-      setOnExpire(false); // Reset onExpire to false when reset is triggered
-    }
   }, [reset]);
   return (
     <div style={{ textAlign: "center" }}>

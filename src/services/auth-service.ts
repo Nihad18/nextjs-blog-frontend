@@ -1,11 +1,11 @@
 import axios from "axios";
-import { ILoginForm, IRegisterForm } from "@/utils/interfaces/auth";
-const url = process.env.API_URL;
+import { IActivateAccount, ILoginForm, IRegisterForm } from "@/utils/interfaces/auth";
+const url = process.env.NEXT_PUBLIC_API_URL;
 
 interface ApiResponse<T> {
   loading: boolean;
-  data: T | null;
   error: string | null;
+  data: T | null;
 }
 
 const ApiService = async <T>(
@@ -13,7 +13,7 @@ const ApiService = async <T>(
   data: any
 ): Promise<ApiResponse<T>> => {
   try {
-    const response = await axios.post(url + endpoint, data);
+    const response = await axios.post(`${url}${endpoint}`, data);
 
     // If the request is successful, return the data
     return { loading: false, data: response.data, error: null };
@@ -28,9 +28,24 @@ const ApiService = async <T>(
 };
 
 export const LoginService = async (data: ILoginForm) => {
-  return ApiService("/api/auth/login", data);
+  return ApiService("/auth/login", data);
 };
 
 export const RegisterService = async (data: IRegisterForm) => {
-  return ApiService("/api/auth/register", data);
+  return ApiService("/auth/register", data);
 };
+
+export const ActivateAccountService = async (data: IActivateAccount) => {
+  return ApiService("/auth/activate-account", data);
+};
+
+export const CheckOtpService = async (data: IActivateAccount) => {
+  return ApiService("/auth/check-otp", data);
+};
+
+export const SeneOtpService = async (data: IActivateAccount) => {
+  return ApiService("/auth/send-otp", data);
+};
+
+
+

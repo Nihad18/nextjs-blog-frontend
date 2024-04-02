@@ -35,15 +35,15 @@ export const RegisterService = async (data: IRegisterForm) => {
   return ApiService("/auth/register", data);
 };
 
-export const ActivateAccountService = async (data: IActivateAccount) => {
+export const ActivateAccountService = async (data: IUserCredentials) => {
   return ApiService("/auth/activate-account", data);
 };
 
-export const CheckOtpService = async (data: IActivateAccount) => {
+export const CheckOtpService = async (data: IUserCredentials) => {
   return ApiService("/auth/check-otp", data);
 };
 
-export const SeneOtpService = async (data: IActivateAccount) => {
+export const SendOtpService = async (data: IUserCredentials) => {
   return ApiService("/auth/send-otp", data);
 };
 

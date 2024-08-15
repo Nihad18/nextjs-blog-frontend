@@ -13,7 +13,7 @@ import {
 } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
 // hooks
-import { useThemeStore } from "@/store/store.tsx";
+import { useThemeStore } from "@/store/store";
 // store
 import { useLocalStorage } from "@/utils/hooks/useLocalStorage";
 // css

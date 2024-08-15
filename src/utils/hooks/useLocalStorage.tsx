@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useThemeStore } from "@/store/store.tsx";
+import { useThemeStore } from "@/store/store";
 export function useLocalStorage() {
   const darkMode = useThemeStore((state:any)=>state.darkMode)
   const changeMode = useThemeStore((state: any) => state.changeMode);

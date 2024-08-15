@@ -12,22 +12,3 @@
 .heading-text {
   @apply text-center font-semibold text-2xl;
 }
-.otp-input {
-  @apply bg-lite-gray border border-lite-gray 
-  text-dark-gray sm:text-sm rounded-lg focus:ring-blue
-   focus:border-blue block w-[40px] p-2.5 dark:bg-gray 
-   dark:border-gray dark:placeholder-lite-gray dark:text-white 
-   dark:focus:ring-blue dark:focus:border-blue; 
-}
-
-input[type="number"] {
-  -moz-appearance: textfield; /* Firefox */
-}
-
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-/* login */
-/* register */

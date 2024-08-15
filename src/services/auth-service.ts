@@ -1,5 +1,5 @@
 import axios from "axios";
-import { IActivateAccount, ILoginForm, IRegisterForm } from "@/utils/interfaces/auth";
+import { ILoginForm, IRegisterForm, IUserCredentials } from "@/utils/interfaces/auth";
 const url = process.env.NEXT_PUBLIC_API_URL;
 
 interface ApiResponse<T> {

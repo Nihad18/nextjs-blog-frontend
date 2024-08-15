@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { GetTags } from "@/services/blog-service";
 import React from "react";
 
@@ -9,7 +9,11 @@ const Tags = () => {
   }
   return (
     <div>
-      {data?.items?.map((item: any) => <div key={item.id}>{item.tagName}</div>)}
+      {data?.items?.length > 1
+        ? data?.items?.map((item: any) => (
+            <div key={item.id}>{item.tagName}</div>
+          ))
+        : "tags not found"}
     </div>
   );
 };

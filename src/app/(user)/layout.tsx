@@ -2,10 +2,7 @@ import Navbar from "@/components/user/layout/navbar";
 import Footer from "@/components/user/layout/footer";
 import { ThemeProviders } from "../theme-provider";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "@/assets/styles/globals.css";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +20,7 @@ export default function RootLayout({
         <link rel='icon' href='../../../public/favicon.ico' sizes='any' />
       </head>
       <body
-        className={`${inter.className} bg-light text-black dark:bg-dark dark:text-white transition-colors`}
+        className={`bg-light text-black dark:bg-dark dark:text-white transition-colors`}
       >
         <ThemeProviders>
           <Navbar />

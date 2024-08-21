@@ -30,6 +30,7 @@ export const registerFormSchema = z
       path: ["confirmPassword"],
     }
   );
+  
 export const loginFormSchema = z.object({
   // defines a required field called email.
   // we use the built-in email validator from zod

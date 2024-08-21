@@ -1,0 +1,16 @@
+.page {
+  @apply w-full max-w-[1200px] min-h-[90vh] p-3;
+}
+
+.header {
+  @apply flex justify-between items-center;
+}
+.head-text {
+  @apply mb-4 text-2xl;
+}
+.breadcrumb * {
+  @apply text-black dark:text-white;
+}
+.breadcrumb a {
+  @apply dark:hover:text-black dark:hover:bg-gray;
+}

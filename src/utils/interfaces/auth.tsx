@@ -8,7 +8,3 @@ export interface ILoginForm {
   email: string;
   password: string;
 }
-export interface IUserCredentials  {
-  email: string;
-  otpCode: string;
-}

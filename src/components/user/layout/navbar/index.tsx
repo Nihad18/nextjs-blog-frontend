@@ -3,7 +3,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // images
-import TailwindLogo from "../../../../public/tailwindcss.svg";
+import TailwindLogo from "../../../../../public/tailwindcss.svg";
 // icons
 import {
   IoSearchOutline,
@@ -12,21 +12,14 @@ import {
   IoClose,
 } from "react-icons/io5";
 import { GiHamburgerMenu } from "react-icons/gi";
-// hooks
-import { useThemeStore } from "@/store/store";
-// store
-import { useLocalStorage } from "@/utils/hooks/useLocalStorage";
 // css
 import "./navbar.css";
+import { useTheme } from "next-themes";
 function Navbar() {
   const [toggle, setToggle] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
 
-  const darkMode = useThemeStore((state: any) => state.darkMode);
-  const changeMode = useThemeStore((state: any) => state.changeMode);
-
-  useLocalStorage();
-
-  const routes: string[] = ["Blogs", "Tags", "About","Login"];
+  const routes: string[] = ["Blogs", "Tags", "About", "Login"];
   return (
     <header className='header'>
       {/* logo */}
@@ -46,7 +39,11 @@ function Navbar() {
           } transition-all md:flex space-x-4 lg:space-x-6`}
         >
           {routes.map((route, index) => (
-            <Link onClick={() => setToggle(false)} key={index} href={"/" + route.toLowerCase()}>
+            <Link
+              onClick={() => setToggle(false)}
+              key={index}
+              href={"/" + route.toLowerCase()}
+            >
               {route}
             </Link>
           ))}
@@ -58,18 +55,18 @@ function Navbar() {
           )}
         </div>
         <IoSearchOutline />
-        {darkMode ? (
+        {theme === "dark" ? (
           <IoSunnyOutline
             className='cursor-pointer'
             onClick={() => {
-              changeMode(false);
+              setTheme("light");
             }}
           />
         ) : (
           <IoMoonSharp
             className='cursor-pointer'
             onClick={() => {
-              changeMode(true);
+              setTheme("dark");
             }}
           />
         )}

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ILoginForm, IRegisterForm, IUserCredentials } from "@/utils/interfaces/auth";
+import { ILoginForm, IRegisterForm } from "@/utils/interfaces/auth";
 const url = process.env.NEXT_PUBLIC_API_URL;
 
 interface ApiResponse<T> {
@@ -34,18 +34,5 @@ export const LoginService = async (data: ILoginForm) => {
 export const RegisterService = async (data: IRegisterForm) => {
   return ApiService("/auth/register", data);
 };
-
-export const ActivateAccountService = async (data: IUserCredentials) => {
-  return ApiService("/auth/activate-account", data);
-};
-
-export const CheckOtpService = async (data: IUserCredentials) => {
-  return ApiService("/auth/check-otp", data);
-};
-
-export const SendOtpService = async (data: IUserCredentials) => {
-  return ApiService("/auth/send-otp", data);
-};
-
 
 

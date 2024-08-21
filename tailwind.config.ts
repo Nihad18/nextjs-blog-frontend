@@ -8,10 +8,12 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      black: "#030712",
+      black: "#000000",
+      dark: "#121212",
       white: "#ffffff",
-      blue:"#0284c7",
-      "blue-2":"#0369a1",
+      light: "#F7F7F7",
+      blue: "#0284c7",
+      "blue-2": "#0369a1",
       "lite-gray": "#f3f4f6",
       gray: "#6b7280",
       "dark-gray": "#111827",
@@ -26,6 +28,6 @@ const config: Config = {
       },
     },
   },
-  darkMode: 'class',
+  darkMode: "class",
 };
 export default config;

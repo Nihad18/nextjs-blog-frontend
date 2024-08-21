@@ -9,7 +9,7 @@ const Tags = () => {
   }
   return (
     <div>
-      {data?.items?.length > 1
+      {data?.items?.length > 0
         ? data?.items?.map((item: any) => (
             <div key={item.id}>{item.tagName}</div>
           ))

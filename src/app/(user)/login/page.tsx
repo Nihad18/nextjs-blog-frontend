@@ -1,24 +1,28 @@
 "use client";
 import React from "react";
 // formik
-import { Formik, Form, FormikHelpers } from "formik";
+import { Formik, Form, FormikHelpers, FormikErrors } from "formik";
 import { toFormikValidationSchema } from "zod-formik-adapter";
 // style files
-import "../auth.css";
+import "@/assets/styles/auth.css";
 // components
-import Input from "@/components/shared/input/input";
+import dynamic from "next/dynamic";
+const Input = dynamic(() => import("@/components/shared/input/input"), {
+  ssr: false,
+});
+import { Input as AntInput } from "antd";
+
 // schemas
 import { loginFormSchema } from "@/utils/schemas/auth";
 // interfaces
 import { ILoginForm } from "@/utils/interfaces/auth";
 // services
 import { LoginService } from "@/services/auth-service";
-import Link from "next/link";
 
-const Login = () => {
+const LoginPage: React.FC = () => {
   const handleSubmit = async (
     values: ILoginForm,
-    { setSubmitting, resetForm }: FormikHelpers<ILoginForm> 
+    { setSubmitting, resetForm }: FormikHelpers<ILoginForm>
   ) => {
     console.log(values);
     const { loading, error, data } = await LoginService(values);
@@ -40,7 +44,13 @@ const Login = () => {
         onSubmit={handleSubmit}
         validationSchema={toFormikValidationSchema(loginFormSchema)}
       >
-        {({ errors, isSubmitting }) => (
+        {({
+          errors,
+          isSubmitting,
+        }: {
+          errors: FormikErrors<ILoginForm>;
+          isSubmitting: boolean;
+        }) => (
           <Form>
             <Input
               label='Email'
@@ -56,6 +66,7 @@ const Login = () => {
               name='password'
               type='password'
               placeholder='password'
+              component={AntInput.Password}
             />
             <div className='text-red'>{errors.password}</div>
             <button
@@ -68,14 +79,8 @@ const Login = () => {
           </Form>
         )}
       </Formik>
-      <Link href="/auth/register" className="routing-link">
-          Create a new account
-      </Link>
-      <Link href="/auth/register" className="routing-link">
-          Forgot password?
-      </Link>
     </div>
   );
 };
 
-export default Login;
+export default LoginPage;

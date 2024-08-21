@@ -1,0 +1,22 @@
+.sidebar {
+  @apply min-h-screen lg:w-[200px] font-medium text-xl absolute lg:static lg:block shrink-0
+   text-black dark:text-white bg-white dark:bg-gray/10;
+}
+
+.close-button {
+  @apply hidden;
+}
+
+.link:hover {
+  @apply text-black/90 dark:text-white/90 translate-y-[-3px] transition-[transform,opacity];
+}
+
+@media screen and (max-width: 1024px) {
+  .toggle {
+    @apply absolute left-0 top-0 z-50
+          space-x-0 space-y-5 h-full w-[300px] bg-black/80 text-white;
+  }
+  .close-button {
+    @apply absolute top-10 right-10 text-5xl cursor-pointer block;
+  }
+}

@@ -6,8 +6,8 @@ const url = "http://localhost:8000";
 const fetcher = (url: string) => axios.get(url).then((res: any) => res.data);
 
 export const GetBlogs = () => {
-  const { data, error, isLoading } = useSWR("/lastblogs", () =>
-    fetcher(`${url}/blogs`)
+  const { data, error, isLoading } = useSWR("/api/blogs", () =>
+    fetcher(`${url}/api/blogs`)
   );
 
   return {
@@ -18,7 +18,7 @@ export const GetBlogs = () => {
 };
 export const GetTags = () => {
   const { data, error, isLoading } = useSWR("/api/tags", () =>
-    fetcher(`${url}/tags`)
+    fetcher(`${url}/api/tags`)
   );
 
   return {

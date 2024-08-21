@@ -23,7 +23,7 @@ const Input = (props: any) => {
              dark:focus:ring-blue dark:focus:border-blue'
             {...field}
             {...rest}
-            onChange={(e) => {
+            onChange={(e:any) => {
               field.onChange(e);
               if (rest.onChange) {
                 rest.onChange(e);

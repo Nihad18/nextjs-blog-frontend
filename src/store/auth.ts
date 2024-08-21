@@ -1,3 +1,4 @@
+"use client"
 import { create } from "zustand";
 import { useRouter } from "next/router";
 import { LoginService } from "@/services/auth-service";

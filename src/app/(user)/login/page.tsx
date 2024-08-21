@@ -24,7 +24,6 @@ const LoginPage: React.FC = () => {
     values: ILoginForm,
     { setSubmitting, resetForm }: FormikHelpers<ILoginForm>
   ) => {
-    console.log(values);
     const { loading, error, data } = await LoginService(values);
     if (error) {
       console.log(error);

@@ -5,7 +5,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "menuu.online",
-        port: "8000",
+        // port: "8000",
         pathname: "/uploads/**",
       },
     ],

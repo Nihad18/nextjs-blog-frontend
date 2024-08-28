@@ -1,7 +1,7 @@
 import axios from "axios";
 import useSWR from "swr";
 
-const url = "http://localhost:8000";
+const url = "https://menuu.online";
 
 const fetcher = (url: string) => axios.get(url).then((res: any) => res.data);
 

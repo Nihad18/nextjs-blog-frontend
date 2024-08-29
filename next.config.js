@@ -3,12 +3,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'menuu.online',
-        pathname: '/uploads/**',
+        hostname: 'menuu.online'
       },
     ],
-    domains: ["menuu.online"],
   },
 };
 

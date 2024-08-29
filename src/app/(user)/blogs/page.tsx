@@ -25,6 +25,9 @@ const Blogs = () => {
                 />
               </div>
               <div>
+                img tag <img src={item.coverImg} alt="image"/>
+              </div>
+              <div>
               </div>
             </div>
           ))

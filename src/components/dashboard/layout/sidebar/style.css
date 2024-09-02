@@ -1,14 +1,18 @@
 .sidebar {
   @apply min-h-screen lg:w-[200px] font-medium text-xl absolute lg:static lg:block shrink-0
-   text-black dark:text-white bg-white dark:bg-gray/10;
+   text-black dark:text-white bg-white dark:bg-dark lg:border-r-[1px];
 }
 
 .close-button {
   @apply hidden;
 }
 
+.link{
+  @apply py-2 px-4 rounded-lg;
+}
+
 .link:hover {
-  @apply text-black/90 dark:text-white/90 translate-y-[-3px] transition-[transform,opacity];
+  @apply bg-gray/10 transition-[color,background];
 }
 
 @media screen and (max-width: 1024px) {

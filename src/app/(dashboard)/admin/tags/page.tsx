@@ -14,7 +14,7 @@ export default function Tags() {
       <div className='header'>
         <h1 className='text-2xl'>Tags</h1>
         <Link href='/admin/tags/create'>
-          <Button type='primary' size='large'>
+          <Button type='primary' className='dark:bg-violet-700 dark:hover:!bg-violet-600' size='large'>
             Create tag
           </Button>
         </Link>

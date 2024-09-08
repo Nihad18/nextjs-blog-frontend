@@ -1,29 +1,45 @@
 import { Field, FieldProps } from "formik";
 import { Input as AntInput } from "antd";
 
-const Input = (props: any) => {
-  const { label, name, id, component: Component = AntInput, ...rest } = props;
+interface InputProps {
+  label: string;
+  name: string;
+  id: string;
+  className?: string;
+  labelClassName?: string;
+  inputClassName?: string;
+  component?: typeof AntInput;
+  [key: string]: any;
+}
+
+const Input = (props: InputProps) => {
+  const {
+    label,
+    name,
+    id,
+    className = "",
+    labelClassName = "",
+    inputClassName = "",
+    component: Component = AntInput,
+    ...rest
+  } = props;
 
   return (
-    <div>
+    <div className={className}>
       <label
         htmlFor={id}
-        className='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
+        className={`block mb-2 text-sm font-medium text-gray-900 dark:text-white ${labelClassName}`}
       >
         {label}
       </label>
       <Field name={name}>
         {({ field }: FieldProps) => (
           <Component
-            autoComplete='true'
-            className='
-            text-dark-gray
-             focus:border-blue w-full p-2.5 dark:bg-gray
-             dark:border-gray dark:placeholder-lite-gray dark:text-white 
-             dark:focus:ring-blue dark:focus:border-blue'
+            autoComplete="on"
+            className={`shared-input ${inputClassName}`}
             {...field}
             {...rest}
-            onChange={(e:any) => {
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               field.onChange(e);
               if (rest.onChange) {
                 rest.onChange(e);

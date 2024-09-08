@@ -45,11 +45,13 @@ export default function Tags() {
               name='tagName'
               type='text'
               placeholder='Tag name'
+              className='my-3'
+              inputClassName="!w-2/4"
             />
             <div className='text-red'>{errors.tagName}</div>
             <Button
               type='primary'
-              className='dark:bg-violet-700 dark:hover:!bg-violet-600'
+              className='button-dark'
               htmlType='submit'
               disabled={isSubmitting}
               size='large'

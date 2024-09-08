@@ -35,19 +35,18 @@ const BreadCrumb = () => {
     };
   });
   
+  const breadcrumbItems = breadcrumbData.map((item, index) => ({
+    key: index,
+    title: item.link ? (
+      <Link href={item.link}>{item.title}</Link>
+    ) : (
+      <span>{item.title}</span>
+    ),
+    icon: item.icon,
+  }));
+  
   return (
-    <Breadcrumb className='breadcrumb'>
-      {breadcrumbData.map((item, index) => (
-        <Breadcrumb.Item key={index}>
-          {item.icon}
-          {item.link ? (
-            <Link href={item.link}>{item.title}</Link>
-          ) : (
-            <span>{item.title}</span>
-          )}
-        </Breadcrumb.Item>
-      ))}
-    </Breadcrumb>
+    <Breadcrumb className='breadcrumb' items={breadcrumbItems} />
   );
 };
 

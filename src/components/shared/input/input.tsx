@@ -8,7 +8,7 @@ interface InputProps {
   className?: string;
   labelClassName?: string;
   inputClassName?: string;
-  component?: typeof AntInput;
+  component?: typeof AntInput | typeof AntInput.Password;
   [key: string]: any;
 }
 

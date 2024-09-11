@@ -5,6 +5,30 @@
 .container {
   @apply w-full mx-auto sm:max-w-[768px] lg:max-w-[1024px];
 }
-body{
+body {
   overflow-x: hidden;
+}
+
+.breadcrumb * {
+  @apply text-black dark:text-white;
+}
+.breadcrumb a {
+  @apply dark:hover:text-white dark:hover:bg-violet-600;
+}
+
+.shared-input,.shared-input input {
+  @apply bg-white text-dark border border-gray-300 rounded-md
+  focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500
+  w-full p-2.5 transition-all duration-200 ease-in-out
+  dark:bg-gray-700 dark:border-gray-600 dark:text-white 
+  dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500
+  hover:border-blue-300 dark:hover:border-blue-400;
+}
+
+.shared-input span[role="img"] {
+  @apply dark:text-white/50 hover:dark:text-white;
+}
+
+.button-dark {
+  @apply dark:bg-violet-700 dark:hover:!bg-violet-600;
 }

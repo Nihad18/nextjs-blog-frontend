@@ -8,9 +8,47 @@
 .head-text {
   @apply mb-4 text-2xl;
 }
-.breadcrumb * {
-  @apply text-black dark:text-white;
+
+/* Antd Table Styles */
+.antd-table {
+  @apply mt-4;
 }
-.breadcrumb a {
-  @apply dark:hover:text-black dark:hover:bg-gray;
+
+/* Header Styles */
+.antd-table thead th {
+  @apply dark:!bg-gray-900 dark:text-gray-200;
+}
+
+/* Body Styles */
+.antd-table tbody {
+  @apply dark:bg-gray-800 dark:text-gray-200;
+}
+
+/* Row Hover Effect */
+.antd-table tbody tr:hover td {
+  @apply dark:!bg-gray-900;
+}
+
+/* Cell Borders */
+.antd-table td,
+.antd-table th {
+  @apply dark:border-gray-600;
+}
+
+/* Pagination Styles */
+.antd-table ul li {
+  @apply dark:bg-violet-700 !border-none;
+}
+
+.antd-table ul li * {
+  @apply dark:!text-white;
+}
+
+.antd-table ul li:hover {
+  @apply dark:bg-violet-600;
+}
+
+/* Disabled Pagination Item */
+.antd-table ul li[aria-disabled="true"] {
+  @apply dark:bg-violet-500;
 }

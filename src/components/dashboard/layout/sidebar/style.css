@@ -12,7 +12,7 @@
 }
 
 .link:hover {
-  @apply bg-gray/10 transition-[color,background];
+  @apply bg-gray-400/20 dark:bg-violet-700 transition-[background];
 }
 
 @media screen and (max-width: 1024px) {
